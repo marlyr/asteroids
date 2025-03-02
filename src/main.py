@@ -7,7 +7,7 @@ from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
 
-assets_path = Path(__file__).parent / 'assets'
+assets_path = Path(__file__).parent / '../assets/'
 
 pygame.init()
 pygame.font.init()
