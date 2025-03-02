@@ -9,7 +9,6 @@ from constants import (
     PLAYER_SHOOT_COOLDOWN
 )
 
-
 class Player(CircleShape):
     def __init__(self, x, y, shot_sound):
         super().__init__(x, y, PLAYER_RADIUS)

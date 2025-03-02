@@ -25,6 +25,7 @@ class Game:
         self.split_files = sorted(assets_path.rglob('bang?.wav'))
         self.split_sounds = [pygame.mixer.Sound(f) for f in self.split_files]
         self.shot_sound = pygame.mixer.Sound(assets_path / 'fire.wav')
+        self.game_over_sound = pygame.mixer.Sound(assets_path / 'game_over.mp3')
 
         # Set groups
         self.updatable = pygame.sprite.Group()
@@ -92,6 +93,7 @@ class Game:
 
 
     def game_over(self):
+        self.game_over_sound.play()
         title_text = self.font_large.render('Game over!', True, 'white')
         title_rect = title_text.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT/2))
         self.screen.blit(title_text, title_rect)
@@ -124,7 +126,6 @@ class Game:
 
         self.player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, self.shot_sound)
         self.asteroidfield = AsteroidField(self.split_sounds)
-        # self.asteroids.reset()
 
         
 if __name__ == "__main__":

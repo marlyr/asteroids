@@ -37,10 +37,6 @@ class AsteroidField(pygame.sprite.Sprite):
         asteroid.velocity = velocity
         asteroid.split_sounds = self.split_sounds
     
-    def reset(self):
-        self.empty()
-        self.spawn_timer = 0.0
-
     def update(self, dt):
         self.spawn_timer += dt
         if self.spawn_timer > ASTEROID_SPAWN_RATE:
