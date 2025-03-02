@@ -27,13 +27,19 @@ class AsteroidField(pygame.sprite.Sprite):
         ],
     ]
 
-    def __init__(self):
+    def __init__(self, split_sounds):
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.spawn_timer = 0.0
+        self.split_sounds = split_sounds
 
     def spawn(self, radius, position, velocity):
-        asteroid = Asteroid(position.x, position.y, radius)
+        asteroid = Asteroid(position.x, position.y, radius, self.split_sounds)
         asteroid.velocity = velocity
+        asteroid.split_sounds = self.split_sounds
+    
+    def reset(self):
+        self.empty()
+        self.spawn_timer = 0.0
 
     def update(self, dt):
         self.spawn_timer += dt
